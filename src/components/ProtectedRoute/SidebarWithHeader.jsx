@@ -1,17 +1,34 @@
 // SidebarWithHeader.jsx
 import {
-  Box, Drawer, DrawerContent, useDisclosure,
+  Box,
+  Drawer,
+  DrawerContent,
+  useDisclosure,
+  useColorModeValue,
+  Flex,
 } from '@chakra-ui/react';
 import SidebarContent from './SidebarContent';
 import MobileNav from './MobileNav';
 import { Outlet } from 'react-router-dom';
 
+const SIDEBAR_WIDTH = 240; // or 60, or whatever you want
+
 const SidebarWithHeader = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box minH="100vh" bg="gray.100">
-      <SidebarContent onClose={onClose} display={{ base: 'none', md: 'block' }} />
+    <Flex minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+      {/* Sidebar */}
+      <Box
+        display={{ base: 'none', md: 'block' }}
+        w={{ base: 'full', md: SIDEBAR_WIDTH }}
+        position="fixed"
+        h="full"
+        zIndex="overlay"
+      >
+        <SidebarContent onClose={onClose} />
+      </Box>
+      {/* Drawer for mobile */}
       <Drawer
         isOpen={isOpen}
         placement="left"
@@ -24,11 +41,19 @@ const SidebarWithHeader = () => {
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
-        <Outlet />
-      </Box>
-    </Box>
+      {/* Main content area */}
+      <Flex
+        direction="column"
+        flex="1"
+        ml={{ base: 0, md: SIDEBAR_WIDTH }}
+        minH="100vh"
+      >
+        <MobileNav onOpen={onOpen} />
+        <Box flex="1" p="4" width="100%">
+          <Outlet />
+        </Box>
+      </Flex>
+    </Flex>
   );
 };
 
