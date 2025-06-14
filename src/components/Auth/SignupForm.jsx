@@ -18,6 +18,8 @@ import {
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import { validateEmail, validatePassword, validatePasswordMatch } from './validation';
+import Parse from '../../parseConfig'; // adjust path as needed
+
 
 const SignupForm = () => {
   const [name, setName] = useState('');
@@ -82,57 +84,60 @@ const SignupForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    // Validate form
-    let hasError = false;
-    if (!name) {
-      setNameError('Name is required');
-      hasError = true;
-    }
-    if (!email) {
-      setEmailError('Email is required');
-      hasError = true;
-    }
-    if (!password) {
-      setPasswordError('Password is required');
-      hasError = true;
-    }
-    if (!confirmPassword) {
-      setConfirmPasswordError('Please confirm your password');
-      hasError = true;
-    }
+  let hasError = false;
+  if (!name) {
+    setNameError('Name is required');
+    hasError = true;
+  }
+  if (!email) {
+    setEmailError('Email is required');
+    hasError = true;
+  }
+  if (!password) {
+    setPasswordError('Password is required');
+    hasError = true;
+  }
+  if (!confirmPassword) {
+    setConfirmPasswordError('Please confirm your password');
+    hasError = true;
+  }
+  if (hasError) return;
 
-    if (hasError) return;
+  setIsLoading(true);
 
-    setIsLoading(true);
+  try {
+    // Parse signup
+    const user = new Parse.User();
+    user.set('username', email);
+    user.set('email', email);
+    user.set('password', password);
+    user.set('name', name); // custom field
 
-    try {
-      // TODO: Implement actual signup logic here
-      // For now, just simulate a successful signup
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: 'Account created successfully',
-        description: 'Please check your email to verify your account',
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
-      });
+    await user.signUp();
 
-      navigate('/login');
-    } catch (error) {
-      toast({
-        title: 'Signup failed',
-        description: error.message || 'Please try again',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    toast({
+      title: 'Account created successfully',
+      description: 'Please check your email to verify your account',
+      status: 'success',
+      duration: 5000,
+      isClosable: true,
+    });
+
+    navigate('/login');
+  } catch (error) {
+    toast({
+      title: 'Signup failed',
+      description: error.message || 'Please try again',
+      status: 'error',
+      duration: 5000,
+      isClosable: true,
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <Box as="form" onSubmit={handleSubmit} id="signup-form">

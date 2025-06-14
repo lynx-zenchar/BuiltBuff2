@@ -1,6 +1,7 @@
 import { Box, useColorMode } from '@chakra-ui/react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import Parse from './parseConfig'; // adjust path as needed
 
 function App() {
   const { colorMode, toggleColorMode } = useColorMode();

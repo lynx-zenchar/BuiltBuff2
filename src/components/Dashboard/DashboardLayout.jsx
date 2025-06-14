@@ -16,7 +16,7 @@ const DashboardLayout = () => {
         transition=".3s ease"
       >
         <Header />
-        <AbsoluteCenter>
+        
         <Box
           as="main"
           p="4"
@@ -24,7 +24,7 @@ const DashboardLayout = () => {
         >
           <Outlet />
         </Box>
-        </AbsoluteCenter>
+        
       </Box>
     </Box>
   );

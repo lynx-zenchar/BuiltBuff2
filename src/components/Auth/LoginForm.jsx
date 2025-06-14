@@ -16,6 +16,7 @@ import {
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import { validateEmail } from './validation';
+import Parse from '../../parseConfig'; // adjust path as needed
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -69,51 +70,50 @@ const LoginForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!checkRateLimit()) return;
+  e.preventDefault();
 
-    // Validate form
-    let hasError = false;
-    if (!email) {
-      setEmailError('Email is required');
-      hasError = true;
-    }
-    if (!password) {
-      setPasswordError('Password is required');
-      hasError = true;
-    }
+  if (!checkRateLimit()) return;
 
-    if (hasError) return;
+  let hasError = false;
+  if (!email) {
+    setEmailError('Email is required');
+    hasError = true;
+  }
+  if (!password) {
+    setPasswordError('Password is required');
+    hasError = true;
+  }
+  if (hasError) return;
 
-    setIsLoading(true);
-    setAttempts(prev => prev + 1);
+  setIsLoading(true);
+  setAttempts(prev => prev + 1);
 
-    try {
-      // TODO: Implement actual login logic here
-      // For now, just simulate a successful login
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      toast({
-        title: 'Login successful',
-        status: 'success',
-        duration: 3000,
-        isClosable: true,
-      });
+  try {
+    // Parse login
+    const user = await Parse.User.logIn(email, password);
+    // Save session token or user info as needed
+    localStorage.setItem('authToken', user.getSessionToken());
 
-      navigate('/dashboard');
-    } catch (error) {
-      toast({
-        title: 'Login failed',
-        description: error.message || 'Please check your credentials and try again',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    toast({
+      title: 'Login successful',
+      status: 'success',
+      duration: 3000,
+      isClosable: true,
+    });
+
+    navigate('/dashboard');
+  } catch (error) {
+    toast({
+      title: 'Login failed',
+      description: error.message || 'Please check your credentials and try again',
+      status: 'error',
+      duration: 5000,
+      isClosable: true,
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <Box as="form" onSubmit={handleSubmit} id="login-form">
@@ -162,6 +162,7 @@ const LoginForm = () => {
             align="start"
             justify="space-between"
           >
+            {/* Placeholder: Remember me functionality not implemented yet */}
             <Checkbox
               id="remember-me"
               name="remember-me"
