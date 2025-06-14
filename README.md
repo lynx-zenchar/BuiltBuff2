@@ -6,7 +6,6 @@ will eventually use Back4App on the backend for database management, and will ev
 I might change my mind and host it using AWS S3 or Amplify but I ain't paying to host this lmao. 
 
 
-
 # React + Vite
 
 
