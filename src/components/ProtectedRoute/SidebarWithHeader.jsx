@@ -47,9 +47,12 @@ const SidebarWithHeader = () => {
         flex="1"
         ml={{ base: 0, md: SIDEBAR_WIDTH }}
         minH="100vh"
+        width="100%" // <-- Ensure full width
+        bg={useColorModeValue('gray.100', 'gray.900')}
       >
         <MobileNav onOpen={onOpen} />
-        <Box flex="1" p="4" width="100%">
+        {/* CHANGED: Remove p="4" and width="100%" from here, let child handle padding */}
+        <Box flex="1" width="100%" height="100%">
           <Outlet />
         </Box>
       </Flex>

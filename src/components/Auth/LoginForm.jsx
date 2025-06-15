@@ -101,7 +101,7 @@ const LoginForm = () => {
       isClosable: true,
     });
 
-    navigate('/dashboard');
+    navigate('/start-workout');
   } catch (error) {
     toast({
       title: 'Login failed',

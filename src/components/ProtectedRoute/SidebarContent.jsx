@@ -3,12 +3,14 @@ import {
   Box, Flex, Text, CloseButton, useColorModeValue,
 } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
-import { FiHome, FiCalendar, FiUser, FiSettings, FiList } from 'react-icons/fi';
+import { FiPlus, FiCalendar, FiUser, FiSettings, FiList, FiActivity } from 'react-icons/fi';
+import { DumbbellIcon } from 'lucide-react';
 
 const LinkItems = [
-  { name: 'Dashboard', icon: FiHome, to: '/dashboard' },
+  { name: 'Start Workout', icon: FiPlus, to: '/start-workout' },
+  { name: 'Exercises', icon: DumbbellIcon, to: '/exercises' },
   { name: 'Upcoming', icon: FiCalendar, to: '/upcoming' },
-  { name: 'Workout Log', icon: FiList, to: '/workout-log' },
+  { name: 'History', icon: FiList, to: '/history' },
   { name: 'Profile', icon: FiUser, to: '/profile' },
   { name: 'Settings', icon: FiSettings, to: '/settings' },
 ];
@@ -25,9 +27,14 @@ const SidebarContent = ({ onClose, ...rest }) => (
     {...rest}
   >
     <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-      <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-        BuiltBuff
-      </Text>
+      <Flex align="center" gap={2}>
+        <Box bg="orange.400" borderRadius="full" boxSize="32px" display="flex" alignItems="center" justifyContent="center">
+          <Box as={DumbbellIcon} color="white" fontSize="20px" />
+        </Box>
+        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
+          BuiltBuff
+        </Text>
+      </Flex>
       <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
     </Flex>
     {LinkItems.map((link) => (

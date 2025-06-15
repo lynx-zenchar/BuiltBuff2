@@ -1,0 +1,314 @@
+[
+    {
+        "user_id": 1,
+        "exercise_type": "Squat",
+        "weight": 55,
+        "date_recorded": "2024-11-19",
+        "age_percentile": 88,
+        "weight_percentile": 89
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Bench Press",
+        "weight": 62,
+        "date_recorded": "2024-11-19",
+        "age_percentile": 86,
+        "weight_percentile": 88.5
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Deadlift",
+        "weight": 70,
+        "date_recorded": "2024-11-19",
+        "age_percentile": 85,
+        "weight_percentile": 87
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Squat",
+        "weight": 55.5,
+        "date_recorded": "2024-11-20",
+        "age_percentile": 88.5,
+        "weight_percentile": 89.5
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Bench Press",
+        "weight": 62.5,
+        "date_recorded": "2024-11-20",
+        "age_percentile": 86.5,
+        "weight_percentile": 88.7
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Deadlift",
+        "weight": 70.5,
+        "date_recorded": "2024-11-20",
+        "age_percentile": 85.2,
+        "weight_percentile": 87.5
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Squat",
+        "weight": 56,
+        "date_recorded": "2024-11-21",
+        "age_percentile": 89,
+        "weight_percentile": 90
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Bench Press",
+        "weight": 63,
+        "date_recorded": "2024-11-21",
+        "age_percentile": 87,
+        "weight_percentile": 89
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Deadlift",
+        "weight": 71,
+        "date_recorded": "2024-11-21",
+        "age_percentile": 86,
+        "weight_percentile": 88
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Squat",
+        "weight": 56.2,
+        "date_recorded": "2024-11-22",
+        "age_percentile": 89.3,
+        "weight_percentile": 90.3
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Bench Press",
+        "weight": 63.5,
+        "date_recorded": "2024-11-22",
+        "age_percentile": 87.2,
+        "weight_percentile": 89.5
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Deadlift",
+        "weight": 71.5,
+        "date_recorded": "2024-11-22",
+        "age_percentile": 86.5,
+        "weight_percentile": 88.5
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Squat",
+        "weight": 56.5,
+        "date_recorded": "2024-11-23",
+        "age_percentile": 89.5,
+        "weight_percentile": 90.5
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Bench Press",
+        "weight": 63.8,
+        "date_recorded": "2024-11-23",
+        "age_percentile": 87.5,
+        "weight_percentile": 89.8
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Deadlift",
+        "weight": 72,
+        "date_recorded": "2024-11-23",
+        "age_percentile": 86.8,
+        "weight_percentile": 88.8
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Squat",
+        "weight": 56.7,
+        "date_recorded": "2024-11-24",
+        "age_percentile": 89.8,
+        "weight_percentile": 90.7
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Bench Press",
+        "weight": 64,
+        "date_recorded": "2024-11-24",
+        "age_percentile": 87.8,
+        "weight_percentile": 90
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Deadlift",
+        "weight": 72.5,
+        "date_recorded": "2024-11-24",
+        "age_percentile": 87,
+        "weight_percentile": 89
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Squat",
+        "weight": 57,
+        "date_recorded": "2024-11-25",
+        "age_percentile": 90,
+        "weight_percentile": 91
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Bench Press",
+        "weight": 64.5,
+        "date_recorded": "2024-11-25",
+        "age_percentile": 88,
+        "weight_percentile": 90.5
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Deadlift",
+        "weight": 73,
+        "date_recorded": "2024-11-25",
+        "age_percentile": 87.5,
+        "weight_percentile": 89.5
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Squat",
+        "weight": 57.2,
+        "date_recorded": "2024-11-26",
+        "age_percentile": 90.2,
+        "weight_percentile": 91.2
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Bench Press",
+        "weight": 65,
+        "date_recorded": "2024-11-26",
+        "age_percentile": 88.2,
+        "weight_percentile": 90.8
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Deadlift",
+        "weight": 73.5,
+        "date_recorded": "2024-11-26",
+        "age_percentile": 87.8,
+        "weight_percentile": 89.8
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Squat",
+        "weight": 57.5,
+        "date_recorded": "2024-11-27",
+        "age_percentile": 90.5,
+        "weight_percentile": 91.5
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Bench Press",
+        "weight": 65.3,
+        "date_recorded": "2024-11-27",
+        "age_percentile": 88.5,
+        "weight_percentile": 91
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Deadlift",
+        "weight": 74,
+        "date_recorded": "2024-11-27",
+        "age_percentile": 88,
+        "weight_percentile": 90
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Squat",
+        "weight": 57.8,
+        "date_recorded": "2024-11-28",
+        "age_percentile": 90.7,
+        "weight_percentile": 91.7
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Bench Press",
+        "weight": 65.5,
+        "date_recorded": "2024-11-28",
+        "age_percentile": 88.7,
+        "weight_percentile": 91.2
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Deadlift",
+        "weight": 74.5,
+        "date_recorded": "2024-11-28",
+        "age_percentile": 88.2,
+        "weight_percentile": 90.2
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Squat",
+        "weight": 58,
+        "date_recorded": "2024-11-29",
+        "age_percentile": 91,
+        "weight_percentile": 92
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Bench Press",
+        "weight": 66,
+        "date_recorded": "2024-11-29",
+        "age_percentile": 89,
+        "weight_percentile": 91.5
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Deadlift",
+        "weight": 75,
+        "date_recorded": "2024-11-29",
+        "age_percentile": 88.5,
+        "weight_percentile": 90.5
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Squat",
+        "weight": 58.2,
+        "date_recorded": "2024-11-30",
+        "age_percentile": 91.2,
+        "weight_percentile": 92.2
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Bench Press",
+        "weight": 66.3,
+        "date_recorded": "2024-11-30",
+        "age_percentile": 89.2,
+        "weight_percentile": 91.8
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Deadlift",
+        "weight": 75.5,
+        "date_recorded": "2024-11-30",
+        "age_percentile": 88.8,
+        "weight_percentile": 90.8
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Squat",
+        "weight": 58.5,
+        "date_recorded": "2024-12-01",
+        "age_percentile": 91.5,
+        "weight_percentile": 92.5
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Bench Press",
+        "weight": 66.5,
+        "date_recorded": "2024-12-01",
+        "age_percentile": 89.5,
+        "weight_percentile": 92
+    },
+    {
+        "user_id": 1,
+        "exercise_type": "Deadlift",
+        "weight": 76,
+        "date_recorded": "2024-12-01",
+        "age_percentile": 89,
+        "weight_percentile": 91
+    }
+]

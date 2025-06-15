@@ -4,11 +4,13 @@ import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import SidebarWithHeader from './components/ProtectedRoute/SidebarWithHeader';
-import Dashboard from './components/ProtectedRoute/Dashboard';
+import StartWorkout from './components/ProtectedRoute/StartWorkout';
 import Upcoming from './components/ProtectedRoute/Upcoming';
 import Profile from './components/ProtectedRoute/Profile';
 import Settings from './components/ProtectedRoute/Settings';
-import WorkoutLog from './components/ProtectedRoute/WorkoutLog';
+import History from './components/ProtectedRoute/History';
+import WorkoutTrackingPage from './components/ProtectedRoute/WorkoutTrackingPage';
+import ExercisesPage from './components/ProtectedRoute/ExercisesPage';
 
 export const router = createBrowserRouter([
   {
@@ -26,12 +28,14 @@ export const router = createBrowserRouter([
             path: '/',
             element: <SidebarWithHeader />,
             children: [
-              { path: 'dashboard', element: <Dashboard /> },
+              { path: 'start-workout', element: <StartWorkout /> },
+              { path: 'track-workout/:workoutId', element: <WorkoutTrackingPage /> },
               { path: 'upcoming', element: <Upcoming /> },
               { path: 'profile', element: <Profile /> },
               { path: 'settings', element: <Settings /> },
-              { path: 'workout-log', element: <WorkoutLog /> },
-              { path: '', element: <Navigate to="/dashboard" replace /> },
+              { path: 'history', element: <History /> },
+              { path: 'exercises', element: <ExercisesPage /> },
+              { path: '', element: <Navigate to="/start-workout" replace /> },
             ],
           },
         ],
