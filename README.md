@@ -1,13 +1,16 @@
 ## Builtbuff 2 (In Progress...)
 
 This is a refactored version of the previous iteration of Builtbuff with a new tech stack.
-This new version is currently being built from the ground up using React + Vite on the front end, 
-will eventually use Back4App on the backend for database management, and will eventually be hosted using Netlify. 
-I might change my mind and host it using AWS S3 or Amplify but I ain't paying to host this lmao. 
+This new version is currently being built from the ground up using React + Vite on the front end,
+will eventually use Back4App on the backend for database management, and will eventually be hosted using Netlify.
+I might change my mind and host it using AWS S3 or Amplify but I ain't paying to host this lmao.
+
+<img src="public/BUILTBUFF_DEMO.jpg">
+<img src="public/DEM3.jpg">
+
 
 
 # React + Vite
-
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
