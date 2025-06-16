@@ -66,7 +66,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 <Avatar
                   size="sm"
                   name={user?.get('name')}
-                  src={user?.get('photo')?.url()}
+                  src={user?.get('photo')?.url}
                 />
                 <VStack
                   display={{ base: 'none', md: 'flex' }}
