@@ -7,6 +7,8 @@ I might change my mind and host it using AWS S3 or Amplify but I ain't paying to
 
 <img src="public/BUILTBUFF_DEMO.jpg">
 <img src="public/DEM3.jpg">
+<img src="public/DEMO_EXER.jpg">
+<img src="public/DEMO_HIST.jpg">
 <img src="public/AI_DEMO.jpg">
 
 
