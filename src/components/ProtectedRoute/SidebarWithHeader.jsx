@@ -49,6 +49,7 @@ const SidebarWithHeader = () => {
         minH="100vh"
         width="100%" // <-- Ensure full width
         bg={useColorModeValue('gray.100', 'gray.900')}
+        justify="center"
       >
         <MobileNav onOpen={onOpen} />
         {/* CHANGED: Remove p="4" and width="100%" from here, let child handle padding */}

@@ -28,8 +28,8 @@ import { useLocation } from 'react-router-dom';
 
 const EXERCISES_API = 'https://parseapi.back4app.com/classes/Exercises?limit=1000';
 const TRACKED_API = 'https://parseapi.back4app.com/classes/TrackedWorkouts';
-const APP_ID = 'wZx2txCduEKOjoqh6Pln5mFQlkYTyis38Iv8CcSk';
-const REST_KEY = 'FkYgj1b3gFCmTefCqKUma58wpNVULpcmvslQyKBV';
+const APP_ID = import.meta.env.VITE_PARSE_APP_ID;
+const REST_KEY = import.meta.env.VITE_PARSE_REST_KEY;
 
 const defaultSet = { weight: '', reps: '', failed: false };
 
@@ -309,8 +309,11 @@ const WorkoutTrackingPage = () => {
   }, [exercisesDB, workout.exercises, debouncedSearch]);
 
   return (
-    <Box maxW="900px" mx="auto" p={4}>
-      <Card bg="white" boxShadow="xl" p={6} borderRadius="lg" mb={8}>
+    <Box 
+    // maxW="900px" // comment out width limit
+    mx="auto" p={4}
+    >
+      <Card bg="white" boxShadow="xl" p={6} borderRadius="lg" mb={8} >
         <CardBody>
           <HStack justify="space-between" mb={4}>
             <Heading size="lg">{workout.name || 'New Workout'}</Heading>

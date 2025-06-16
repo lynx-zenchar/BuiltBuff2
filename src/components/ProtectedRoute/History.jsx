@@ -26,8 +26,8 @@ import {
 import { FiEdit2 } from 'react-icons/fi';
 import Parse from '../../parseConfig';
 
-const APP_ID = 'wZx2txCduEKOjoqh6Pln5mFQlkYTyis38Iv8CcSk';
-const REST_KEY = 'FkYgj1b3gFCmTefCqKUma58wpNVULpcmvslQyKBV';
+const APP_ID = import.meta.env.VITE_PARSE_APP_ID;
+const REST_KEY = import.meta.env.VITE_PARSE_REST_KEY;
 const TRACKED_API = 'https://parseapi.back4app.com/classes/TrackedWorkouts?limit=1000';
 
 function groupBySession(workouts) {
@@ -145,7 +145,9 @@ const History = () => {
   };
 
   return (
-    <Box maxW="1200px" mx="auto" p={4}>
+    <Box 
+    // maxW="1200px" // comment out width limit
+    mx="auto" p={4}>
       <Heading size="lg" mb={6}>Workout History</Heading>
       {loading ? <Spinner size="lg" /> : (
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>

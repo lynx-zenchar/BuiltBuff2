@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Button,
@@ -12,12 +12,19 @@ import {
   IconButton,
   VStack,
   useDisclosure,
+  useToast,
 } from '@chakra-ui/react';
 import { FiPlus, FiEdit2, FiTrash2 } from 'react-icons/fi';
 import TemplateModal from './TemplateModal';
+import TemplateForm from './TemplateForm';
 import { useNavigate } from 'react-router-dom';
+import Parse from '../../parseConfig';
 
-// Updated template data with full exercise lists
+const TEMPLATES_API = 'https://parseapi.back4app.com/classes/WorkoutTemplates';
+const APP_ID = import.meta.env.VITE_PARSE_APP_ID;
+const REST_KEY = import.meta.env.VITE_PARSE_REST_KEY;
+
+// Global templates remain unchanged
 const globalTemplates = [
   {
     id: 'global-push',
@@ -68,25 +75,42 @@ const globalTemplates = [
   },
 ];
 
-const userTemplatesMock = [
-  {
-    id: 'user-1',
-    name: 'Custom Upper',
-    goal: 'finish in 50 mins',
-    lastPerformed: '2025-05-01',
-    exercises: [
-      { name: 'Push Up', muscle: 'Chest' },
-      { name: 'Pull Up', muscle: 'Back' },
-    ],
-    isGlobal: false,
-  },
-];
-
 const StartWorkout = () => {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
-  const [userTemplates, setUserTemplates] = useState(userTemplatesMock);
+  const [userTemplates, setUserTemplates] = useState([]);
+  const [editingTemplate, setEditingTemplate] = useState(null);
   const templateModal = useDisclosure();
+  const templateFormModal = useDisclosure();
   const navigate = useNavigate();
+  const toast = useToast();
+  const user = Parse.User.current();
+  const userId = user?.id;
+
+  useEffect(() => {
+    fetchUserTemplates();
+  }, [userId]);
+
+  const fetchUserTemplates = async () => {
+    try {
+      const response = await fetch(`${TEMPLATES_API}?where={"userId":"${userId}"}`, {
+        headers: {
+          'X-Parse-Application-Id': APP_ID,
+          'X-Parse-REST-API-Key': REST_KEY,
+        },
+      });
+      const data = await response.json();
+      setUserTemplates(data.results);
+    } catch (error) {
+      console.error('Error fetching templates:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to load templates',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  };
 
   const handleOpenTemplate = (template) => {
     setSelectedTemplate(template);
@@ -102,7 +126,6 @@ const StartWorkout = () => {
     navigate('/track-workout/empty');
   };
 
-  // Start workout from template: pass exercises as state
   const handleStartWorkoutFromTemplate = (template) => {
     const exercises = template.exercises.map((ex) => ({
       ...ex,
@@ -122,22 +145,63 @@ const StartWorkout = () => {
     templateModal.onClose();
   };
 
+  const handleCreateTemplate = () => {
+    setEditingTemplate(null);
+    templateFormModal.onOpen();
+  };
+
+  const handleEditTemplate = (template) => {
+    setEditingTemplate(template);
+    templateFormModal.onOpen();
+  };
+
+  const handleDeleteTemplate = async (template) => {
+    try {
+      const response = await fetch(`${TEMPLATES_API}/${template.objectId}`, {
+        method: 'DELETE',
+        headers: {
+          'X-Parse-Application-Id': APP_ID,
+          'X-Parse-REST-API-Key': REST_KEY,
+        },
+      });
+      if (!response.ok) throw new Error('Failed to delete template');
+      
+      toast({
+        title: 'Success',
+        description: 'Template deleted successfully',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
+      
+      fetchUserTemplates();
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: error.message,
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  };
+
   return (
-    <Box maxW="900px" mx="auto" p={4}>
+    <Box mx="auto" p={4}>
       <Heading size="xl" mb={4}>Start Workout</Heading>
       <Button colorScheme="orange" size="lg" mb={6} w="100%" onClick={handleStartEmptyWorkout}>
         Start an Empty Workout
       </Button>
       <HStack justify="space-between" mb={2}>
         <Heading size="md">Templates</Heading>
-        <Button leftIcon={<FiPlus />} colorScheme="blue" variant="ghost" size="sm">
-          Template
+        <Button leftIcon={<FiPlus />} colorScheme="blue" variant="ghost" size="sm" onClick={handleCreateTemplate}>
+          Create Template
         </Button>
       </HStack>
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
         {[...globalTemplates, ...userTemplates].map((template) => (
           <Card
-            key={template.id}
+            key={template.objectId || template.id}
             variant="outline"
             onClick={() => handleOpenTemplate(template)}
             cursor="pointer"
@@ -159,8 +223,26 @@ const StartWorkout = () => {
                 <HStack>
                   {!template.isGlobal && (
                     <>
-                      <IconButton icon={<FiEdit2 />} size="sm" aria-label="Edit" variant="ghost" />
-                      <IconButton icon={<FiTrash2 />} size="sm" aria-label="Delete" variant="ghost" />
+                      <IconButton
+                        icon={<FiEdit2 />}
+                        size="sm"
+                        aria-label="Edit"
+                        variant="ghost"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleEditTemplate(template);
+                        }}
+                      />
+                      <IconButton
+                        icon={<FiTrash2 />}
+                        size="sm"
+                        aria-label="Delete"
+                        variant="ghost"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDeleteTemplate(template);
+                        }}
+                      />
                     </>
                   )}
                 </HStack>
@@ -179,6 +261,12 @@ const StartWorkout = () => {
         onClose={handleCloseTemplate}
         template={selectedTemplate}
         onStartWorkout={handleStartWorkoutFromTemplate}
+      />
+      <TemplateForm
+        isOpen={templateFormModal.isOpen}
+        onClose={templateFormModal.onClose}
+        template={editingTemplate}
+        onSave={fetchUserTemplates}
       />
     </Box>
   );

@@ -17,8 +17,8 @@ import {
   ListItem,
 } from '@chakra-ui/react';
 
-const APP_ID = 'wZx2txCduEKOjoqh6Pln5mFQlkYTyis38Iv8CcSk';
-const REST_KEY = 'FkYgj1b3gFCmTefCqKUma58wpNVULpcmvslQyKBV';
+const APP_ID = import.meta.env.VITE_PARSE_APP_ID;
+const REST_KEY = import.meta.env.VITE_PARSE_REST_KEY;
 const API_URL = 'https://parseapi.back4app.com/classes/Exercises?limit=1000';
 
 const ExercisesPage = () => {
@@ -73,7 +73,7 @@ const ExercisesPage = () => {
   };
 
   return (
-  <Box flex="1" width="100%" height="100%" p={4} bg="white">
+  <Box flex="1" width="100%" height="100%" p={4} bg="gray.100">
     <Heading size="xl" mb={4}>Exercises</Heading>
     <Input
       placeholder="Search exercises..."
@@ -88,7 +88,7 @@ const ExercisesPage = () => {
       // Center the white box horizontally
       <Box display="flex" justifyContent="center" width="100%">
         <Box
-          maxH="600px"
+          //maxH="600px"
           overflowY="auto"
           borderRadius="md"
           borderWidth={1}
@@ -97,7 +97,7 @@ const ExercisesPage = () => {
           minHeight="400px"
           bg="white"
           width="100%"
-          maxW="500px" // <-- Set a max width for the list card
+          //maxW="500px" // <-- Set a max width for the list card
         >
           <List spacing={2} width="100%">
             {filtered.map((ex) => (
@@ -133,7 +133,7 @@ const ExercisesPage = () => {
       </ModalContent>
     </Modal>
   </Box>
-);
+  );
 };
 
 export default ExercisesPage;
