@@ -9,7 +9,7 @@ import { DumbbellIcon } from 'lucide-react';
 const LinkItems = [
   { name: 'Start Workout', icon: FiPlus, to: '/start-workout' },
   { name: 'Exercises', icon: DumbbellIcon, to: '/exercises' },
-  { name: 'Upcoming', icon: FiCalendar, to: '/upcoming' },
+  { name: 'Fitness Coach Chat', icon: FiCalendar, to: '/upcoming' },
   { name: 'History', icon: FiList, to: '/history' },
   { name: 'Profile', icon: FiUser, to: '/profile' },
   { name: 'Settings', icon: FiSettings, to: '/settings' },
