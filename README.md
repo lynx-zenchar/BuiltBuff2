@@ -1,9 +1,7 @@
 ## Builtbuff 2 (In Progress...)
 
 This is a refactored version of the previous iteration of Builtbuff with a new tech stack.
-This new version is currently being built from the ground up using React + Vite on the front end,
-will eventually use Back4App on the backend for database management, and will eventually be hosted using Netlify.
-I might change my mind and host it using AWS S3 or Amplify but I ain't paying to host this lmao.
+This new version is currently being built from the ground up using React + Vite on the front end, and uses Back4App on the backend for database management, and is currently hosted using Netlify.
 
 <img src="public/BUILTBUFF_DEMO.jpg">
 <img src="public/DEM3.jpg">
